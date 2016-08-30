@@ -34,7 +34,7 @@ Data_save(){
     EXCLUDE=$(eval echo $EXCLUDE_LIST | sed "i--exclude=\\'" | tr -d '\n' | sed "s/\ \// --exclude=\\'\//g" | sed "s/\/ /\' /g")
 
     TAR_CMD="tar $EXCLUDE' -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
-
+    
     echo "" >> $LOG_PATH/Save.log
     echo "Sauvegarde en cours" >> $LOG_PATH/Save.log
     Time=$({ time $(eval $(echo $TAR_CMD));  } 2>&1 | grep real | cut -d 'l' -f2 | cut -c2-)

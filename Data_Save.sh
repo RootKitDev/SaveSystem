@@ -17,21 +17,24 @@ do
 done
 
 # Define PATH
-HOME_PATH="/home/backup"
-LOG_PATH="$HOME_PATH/Logs.d"
+HOME_PATH=""
+LOG_PATH=""
 
-LIB_PATH="$HOME_PATH/Lib.d"
+LIB_PATH=""
+FLAG_PATH=""
 
-EXPORT_PATH="$HOME_PATH/Data_Export"
-EXPORT_CKSUM_PATH="$HOME_PATH/CkSum_Export"
+EXPORT_PATH=""
+EXPORT_CKSUM_PATH=""
 
-REMOTE_EXPORT_PATH="/home/save/azrod/Data"
+REMOTE_EXPORT_PATH=""
 
-LISTED_INCREMENTAL_PATH="$HOME_PATH/Lists.d"
-SAVE_LIST_PATH="$HOME_PATH/ListSave.d"
-EXCLUDE_LIST_PATH="$HOME_PATH/ExcludeSave.d"
+LISTED_INCREMENTAL_PATH=""
+SAVE_LIST_PATH=""
+EXCLUDE_LIST_PATH=""
 
-SAVE_STATE_PATH="$HOME_PATH/Etats"
+SAVE_STATE_PATH=""
+
+SUB_LOG=""
 
 # Load all .sh lib, using source command
 source $LIB_PATH/exist.sh
@@ -40,6 +43,7 @@ source $LIB_PATH/Save.sh
 source $LIB_PATH/Export.sh
 source $LIB_PATH/required.sh
 source $LIB_PATH/Check_Sum.sh
+source $LIB_PATH/States.sh
 
 # Writing in the early log
 echo "" >> $LOG_PATH/Save.log
@@ -60,13 +64,14 @@ Go_Save_WE="2130"
 
 
 # Determining the type of backup
-if [ $MonthNow -gt $MonthYesterday ] || [ -f /home/backup/Flags/EX-000 ];
+if [ $MonthNow -gt $MonthYesterday ] || [ -f $FLAG_PATH/EX-000 ];
 then
-
-	if [ ! -f /home/backup/Flags/PS-001 ] || [ -f /home/backup/Flags/EX-000 ] ;
+	
+	echo "EC" > $SAVE_STATE_PATH/$MonthSave/$DaySave
+	if [ ! -f $FLAG_PATH/PS-001 ] || [ -f $FLAG_PATH/EX-000 ] ;
 	then
 		# Writing Log File
-		if [ -f /home/backup/Flags/EX-000 ];
+		if [ -f $FLAG_PATH/EX-000 ];
 		then
 				echo 'Sauvegarde Exceptionnel (sauvegarde Full) :' >> $LOG_PATH/Save.log
 		else
@@ -99,13 +104,14 @@ then
 		
 	else
 		echo 'Fanion "Pas de Sauvegarde Mensuel" détecté' >> $LOG_PATH/Save.log
-		echo "PS-Mensuel" > $SAVE_STATE_PATH/$(date +"%m_%B/%d")
+		State_Save 4
 	fi
 	
 elif [[ "$Day" = "1" ]];
 then 
-
-	if [ ! -f /home/backup/Flags/PS-002 ];
+	
+	echo "EC" > $SAVE_STATE_PATH/$MonthSave/$DaySave
+	if [ ! -f $FLAG_PATH/PS-002 ];
 	then
 		# Writing Log File
 		echo 'Sauvegarde Hebdomadaire (sauvegarde Full) :' >> $LOG_PATH/Save.log
@@ -136,12 +142,13 @@ then
 		
 	else
 		echo 'Fanion "Pas de Sauvegarde Hebdomadaire" détecté' >> $LOG_PATH/Save.log
-		echo "PS-Hebdo" > $SAVE_STATE_PATH/$(date +"%m_%B/%d")
+		State_Save 4
 	fi
 	
 elif [[ "$Day" = "6" ]] && [[ "$(date +%H%M)" -gt $Go_Save_WE ]];
 then 
-	if [ ! -f /home/backup/Flags/PS-003 ];
+	echo "EC" > $SAVE_STATE_PATH/$MonthSave/$DaySave
+	if [ ! -f $FLAG_PATH/PS-003 ];
 	then
 		# Writing Log File
 		echo 'Sauvegarde Week-End (sauvegarde Incrementiel => Mensuel) :' >> $LOG_PATH/Save.log
@@ -170,12 +177,13 @@ then
 		
 	else
 		echo 'Fanion "Pas de Sauvegarde Week-End" détecté' >> $LOG_PATH/Save.log
-		echo "PS-WE" > $SAVE_STATE_PATH/$(date +"%m_%B/%d")
+		State_Save 4
 	fi
 
-else
-
-	if [ ! -f /home/backup/Flags/PS-004 ];
+elif [[ ! -e $FLAG_PATH/PS-000 ]]; 
+then
+	echo "EC" > $SAVE_STATE_PATH/$MonthSave/$DaySave
+	if [ ! -f $FLAG_PATH/PS-004 ];
 	then
 		# Writing Log File
 		echo 'Sauvegarde Journaliere (sauvegarde Incrementiel => Hebdomadaire) :'  >> $LOG_PATH/Save.log
@@ -204,9 +212,9 @@ else
 		
 	else
 		echo 'Fanion "Pas de Sauvegarde Journaliere" détecté' >> $LOG_PATH/Save.log
-		echo "PS-Journa" > $SAVE_STATE_PATH/$(date +"%m_%B/%d")
+		State_Save 4
 	fi
-	
+
 fi
 
 echo "" >> $LOG_PATH/Save.log

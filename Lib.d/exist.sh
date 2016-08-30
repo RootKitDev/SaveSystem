@@ -13,9 +13,11 @@ error(){
                 0)  echo "'$element' -> Ok pour Sauvegarde" >> $LOG_PATH/Save.log;;
                 1)  echo "Code d'erreur 1 :"  >> $LOG_PATH/Save.log
                         echo -e "\t '$element' n'existe pas" >> $LOG_PATH/Save.log
+                        State_Save 1
                         exit 1;;
                 2)  echo "Code d'erreur 2 :"  >> $LOG_PATH/Save.log
                         echo -e "\t '$element' n'est pas un dossier" >> $LOG_PATH/Save.log
+                        State_Save 1
                         exit 2;;
         esac
 }
