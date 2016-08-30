@@ -5,7 +5,7 @@ independent backup system for Linux (tested on Debian GNU / Linux 8.5 (jessie))
 ---
 ### Languages used
 SaveSystem uses a single language:
-    - Shell (100%)
+ - Shell (100%)
 
 ---
 ### version
@@ -33,23 +33,23 @@ SaveSystem currently runs on the backup server and the script is designed to be
 execute at least once a day.
 
 SaveSystem done with any order of priority, the following safeguards:
-    - Monthly (Full: e.g full backup of the system)
-    - Hebdomadiare (Full: e.g full backup of user / application data)
-    - Weekend (the Incremental Monthly: e.g every Saturday)
-    - SQL (Full BDDs: e.g every Sunday)
-    - Daily (Incremental the Hebdomadiare: the default action if no other backups have not triggered)
+ - Monthly (Full: e.g full backup of the system)
+ - Hebdomadiare (Full: e.g full backup of user / application data)
+ - Weekend (the Incremental Monthly: e.g every Saturday)
+ - SQL (Full BDDs: e.g every Sunday)
+ - Daily (Incremental the Hebdomadiare: the default action if no other backups have not triggered)
 
 SaveSystem integrates a system of "flags" in ```sh /path/to/my/SaveSystem/Flags ```, which allows backup management.
 The Flags are by default "arranged" in ```sh /path/to/my/SaveSystem/Flags/Block ``` so that the SaveSystem not interprete the flags by" mistake ".
 
 The list of Flags:
 WARNING: Pennants PS arbitrarily priority.
-    - EX-000 ( "Exceptional  Backup": execute a backup Monthly out in the condition by default (every 1st of the month))
-    - PS-000 ( "No Backup" (Super "No Backup") prevents any kind of backup (without indicating that there was no backup), to let the SQL backups occur )
-    - PS-001 ( "No Monthly / Exceptional  Backup" historizes logs in the "No Backup")
-    - PS-002 ( "No Hebdomadiare Backup" historizes logs in the "No Backup")
-    - PS-003 ( "No Backup Weekend" historizes logs in the "No Backup")
-    - PS-004 ( "No daily backup" historizes logs in the "No Backup")
+ - EX-000 ( "Exceptional  Backup": execute a backup Monthly out in the condition by default (every 1st of the month))
+ - PS-000 ( "No Backup" (Super "No Backup") prevents any kind of backup (without indicating that there was no backup), to let the SQL backups occur )
+ - PS-001 ( "No Monthly / Exceptional  Backup" historizes logs in the "No Backup")
+ - PS-002 ( "No Hebdomadiare Backup" historizes logs in the "No Backup")
+ - PS-003 ( "No Backup Weekend" historizes logs in the "No Backup")
+ - PS-004 ( "No daily backup" historizes logs in the "No Backup")
 
 The automatic use of this system requires crontab (or any other task scheduler)
 Here is an example of crontab rule
@@ -67,7 +67,7 @@ HMI (Human Machine Interface) web is under developement integrating, displaying 
 The [public repository] [ihm] the IHM_SaveSystem
 
 ---
-Contribution ###
+### Contribution
 
 Want to contribute? Very good !
 
