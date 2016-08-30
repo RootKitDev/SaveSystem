@@ -5,7 +5,7 @@ Système de sauvegarde autonome pour Linux (testé sous Debian GNU/Linux 8.5 (je
 ---
 ### Langages utilisés
 SaveSystem utilise un seul et unique language :
-    - Shell (100%)
+ - Shell (100%)
 
 ---
 ### Version
@@ -33,23 +33,23 @@ SaveSystem fonctionne actuellement sur le serveur à sauvegarde et le script est
 execute au moins une fois par jour.
 
 SaveSystem effectue, avec un ordre arbitraire de priorité, les sauvegardes suivante:
-    - Mensuel (Full : e.g sauvegarde full du systeme ),
-    - Hebdomadiare (Full : e.g sauvegarde full des données utilisateur/applicatives),
-    - Week-End (Incrémentiel de la Mensuel : e.g chaque Samedi),
-    - SQL (Full des BDDs : e.g chaque Dimanche),
-    - Journaliere (Incrémentiel de la Hebdomadiare : c'est le traitement par défaut si aucune autre sauvegardes n'ont pas déclenché)
+ - Mensuel (Full : e.g sauvegarde full du systeme ),
+ - Hebdomadiare (Full : e.g sauvegarde full des données utilisateur/applicatives),
+ - Week-End (Incrémentiel de la Mensuel : e.g chaque Samedi),
+ - SQL (Full des BDDs : e.g chaque Dimanche),
+ - Journaliere (Incrémentiel de la Hebdomadiare : c'est le traitement par défaut si aucune autre sauvegardes n'ont pas déclenché)
 
 SaveSystem intégre un systeme de "Fanions" dans ```sh /path/to/my/SaveSystem/Flags ```, qui permet la gestion des sauvegardes.
 Les Fanions sont par défault "rangés" dans ```sh /path/to/my/SaveSystem/Flags/Block ```, afin qui le SaveSystem n'interprete pas les fanions par "erreur".
 
 La liste des Fanions : 
 ATTENTTION : Les fanions PS sont arbitrairement prioritaire.
-    - EX-000 ("Sauvegarde Exceptionnel" : execute une sauvegarde Mensuel hors dans la condition par défault (chaque 1er du mois)),
-    - PS-000 ("Pas de Sauvegarde" (Super "Pas de Sauvegarde") : empeche tous type de sauvegarde (sans pour autant indiquer qu'il n'y a pas eu de sauvegarde), pour laisser les sauvegardes SQL s'effectuer),
-    - PS-001 ("Pas de Sauvegarde Mensuel/Exceptionnel" : historise dans les logs le "Pas de Sauvegarde"),
-    - PS-002 ("Pas de Sauvegarde Hebdomadiare" : historise dans les logs le "Pas de Sauvegarde"),
-    - PS-003 ("Pas de Sauvegarde Week-End" : historise dans les logs le "Pas de Sauvegarde"),
-    - PS-004 ("Pas de Sauvegarde Journaliere" : historise dans les logs le "Pas de Sauvegarde")
+ - EX-000 ("Sauvegarde Exceptionnel" : execute une sauvegarde Mensuel hors dans la condition par défault (chaque 1er du mois)),
+ - PS-000 ("Pas de Sauvegarde" (Super "Pas de Sauvegarde") : empeche tous type de sauvegarde (sans pour autant indiquer qu'il n'y a pas eu de sauvegarde), pour laisser les sauvegardes SQL s'effectuer),
+ - PS-001 ("Pas de Sauvegarde Mensuel/Exceptionnel" : historise dans les logs le "Pas de Sauvegarde"),
+ - PS-002 ("Pas de Sauvegarde Hebdomadiare" : historise dans les logs le "Pas de Sauvegarde"),
+ - PS-003 ("Pas de Sauvegarde Week-End" : historise dans les logs le "Pas de Sauvegarde"),
+ - PS-004 ("Pas de Sauvegarde Journaliere" : historise dans les logs le "Pas de Sauvegarde")
 
 L'utilisation automatique de ce systeme nécessite crontab (ou tout autre planificateur de tâches)
 voici un exemple de règle crontab 
