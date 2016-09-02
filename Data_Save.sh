@@ -4,7 +4,7 @@
 # Data_Save.sh
 # Utilité: ce script sert à faire des sauvegardés de données de façon dynamique
 # Auteur: RootKitDev <RootKit.Dev@gmail.com>
-# Mise à jour le: 02/08/2016
+# Mise à jour le: 02/09/2016
 ######################################
 
 # Verbose mode
@@ -17,26 +17,14 @@ do
 done
 
 # Define PATH
-HOME_PATH=""
-LOG_PATH=""
-
-LIB_PATH=""
-FLAG_PATH=""
-
-EXPORT_PATH=""
-EXPORT_CKSUM_PATH=""
-
-REMOTE_EXPORT_PATH=""
-
-LISTED_INCREMENTAL_PATH=""
-SAVE_LIST_PATH=""
-EXCLUDE_LIST_PATH=""
-
-SAVE_STATE_PATH=""
+LIB_PATH="$HOME_PATH/Lib.d"
 
 SUB_LOG=""
 
-# Load all .sh lib, using source command
+# Load Var lib, for all var path (log, flag, ...)
+source $LIB_PATH/Var.sh
+
+# Load all the others .sh lib
 source $LIB_PATH/exist.sh
 source $LIB_PATH/list.sh
 source $LIB_PATH/Save.sh
