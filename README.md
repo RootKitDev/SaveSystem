@@ -64,7 +64,7 @@ The current system requires a host of reception, for outsourcing backups.
 ---
 ### Git Linked
 HMI (Human Machine Interface) web is under developement integrating, displaying the backup logs asked CkeckSum display and volume
-The [public repository] [IHM] the IHM_SaveSystem
+The [public repository] [HMI] IHM_SaveSystem
 
 ---
 ### Contribution
