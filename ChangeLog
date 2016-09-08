@@ -1,10 +1,53 @@
-[33mcommit 8c156976fc07d2f83ac2ef95c2c983bba2495179[m[33m ([1;36mHEAD[m[33m, [1;31morigin/master[m[33m, [1;32mmaster[m[33m)[m
+commit 637d3b5c866102411158f1249235db512574d32f
+Merge: 8342a7a c348409
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Fri Sep 2 08:35:59 2016 +0200
+
+    Merge branch 'master' of https://github.com/RootKitDev/SaveSystem
+
+commit 8342a7a23e4730f006bc5a6a2e1e67010ec66944
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Fri Sep 2 08:32:24 2016 +0200
+
+    Add install.sh, Var.sh and config.cfg
+
+commit c3484091cf34b8921d32d3d55f6cdd1af4f3a5a3
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Fri Sep 2 07:46:17 2016 +0200
+
+    Update README.md
+
+commit a32d2bd7818bde164a9937461e9448d01f0d54f8
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Fri Sep 2 07:45:33 2016 +0200
+
+    Update README.md
+
+commit 32dbac4e89eb7ad17db413f6f3f3bb38f2835a98
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Tue Aug 30 14:44:22 2016 +0200
+
+    Update LISEZMOI.md
+
+commit 2cab0fba4f5c0ab2d53dbcae52f0d8f8dc6ab8cc
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Tue Aug 30 14:43:32 2016 +0200
+
+    Update README.md
+
+commit 153f372c934514302890075f7b9f46a3006558aa
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Tue Aug 30 14:41:03 2016 +0200
+
+    Add License, ReadMe, Lisezmoi, ChangeLog file
+
+commit 8c156976fc07d2f83ac2ef95c2c983bba2495179
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Tue Aug 30 09:43:25 2016 +0200
 
     SQL Save system updated
 
-[33mcommit 788632d9d8e8a5f743d3d5d321b54d1b07e837ce[m
+commit 788632d9d8e8a5f743d3d5d321b54d1b07e837ce
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Fri Aug 19 14:23:05 2016 +0200
 

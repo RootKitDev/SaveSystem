@@ -33,7 +33,11 @@ Data_save(){
     EXCLUDE_LIST=$(eval cat $EXCLUDE_LIST_PATH/ListExclude$TARGET)
     EXCLUDE=$(eval echo $EXCLUDE_LIST | sed "i--exclude=\\'" | tr -d '\n' | sed "s/\ \// --exclude=\\'\//g" | sed "s/\/ /\' /g")
 
-    TAR_CMD="tar $EXCLUDE' -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
+    if [[ $EXCLUDE == "--exclude='" ]]; then
+        TAR_CMD="tar -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
+    else
+        TAR_CMD="tar $EXCLUDE -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
+    fi
     
     echo "" >> $LOG_PATH/Save.log
     echo "Sauvegarde en cours" >> $LOG_PATH/Save.log
