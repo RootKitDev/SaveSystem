@@ -1,7 +1,7 @@
 ## Bug 02
 Sun  11 Sep 16:50:39 CEST 2016
 
-Libary Save.sh can't create tarball, or take lot of time to, because of:
+Libary Save.sh can't create tarball, or take a long time for, because of:
  - "file changed as we read it"
  - "socket ignored" (can block tar cmd)
  
