@@ -1,3 +1,9 @@
+commit 595edf4c6c0e8c1a030e7e8317fbee5500a69d96
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Thu Sep 8 15:33:20 2016 +0200
+
+    Resolv Bug 01
+
 commit 637d3b5c866102411158f1249235db512574d32f
 Merge: 8342a7a c348409
 Author: RootKitDev <rootkit.dev@gmail.com>

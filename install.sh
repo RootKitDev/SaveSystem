@@ -152,9 +152,11 @@ else
             Intall=$(dpkg -l | grep apache | head -n1)
             if [[ -n $Intall ]]; then
                 Appli="apache2"
+                echo "export HOME_PATH=\"$HOME_PATH\"" >> /etc/apache2/envvars
             fi
         else
             Appli="nginx"
+            echo "env HOME_PATH=\"$HOME_PATH\";" >> /etc/nginx/nginx.conf
         fi
         
         echo "Redémarrage du service web"
