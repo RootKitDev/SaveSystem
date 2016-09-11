@@ -1,3 +1,15 @@
+commit ad786a9fc7d2662fd0056e309fde1c52dae89ecd
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Sun Sep 11 17:23:30 2016 +0200
+
+    TMP-Resolv Bug 02 and add begin Revolv incompatibility with IHM_SaveSystem
+
+commit a5dcd01ea6c81c4aafd8720261810980ecb4a3f5
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Sun Sep 11 17:23:21 2016 +0200
+
+    TMP-Resolv Bug 02 and add begin Revolv incompatibility with IHM_SaveSystem
+
 commit 595edf4c6c0e8c1a030e7e8317fbee5500a69d96
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Thu Sep 8 15:33:20 2016 +0200
