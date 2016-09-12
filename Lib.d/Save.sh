@@ -31,12 +31,14 @@ Data_save(){
     esac
 
     EXCLUDE_LIST=$(eval cat $EXCLUDE_LIST_PATH/ListExclude$TARGET)
-    EXCLUDE=$(eval echo $EXCLUDE_LIST | sed "i--exclude=\\'" | tr -d '\n' | sed "s/\ \// --exclude=\\'\//g" | sed "s/\/ /\' /g")
+    EXCLUDE=$(eval echo $EXCLUDE_LIST | sed "i--exclude=\\" | tr -d '\n' | sed "s/\ \// --exclude=\\//g")
 
     if [[ $EXCLUDE == "--exclude='" ]]; then
         TAR_CMD="tar -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
     else
-        TAR_CMD="tar $EXCLUDE -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
+        TAR_CMD="tar -czf $EXPORT_PATH/$EXPORT_NAME --listed-incremental=$LISTED_INCREMENTAL_PATH/$Listed_Incremental $EXCLUDE $(echo -e "$(cat $SAVE_LIST_PATH/ListSave$TARGET)\n")"
+        echo "Les répertoire suivants ont été exclus :" >> $LOG_PATH/Save.log
+        echo -e "$(cat $EXCLUDE_LIST_PATH/ListExclude$TARGET)\n" >> $LOG_PATH/Save.log
     fi
     
     echo "" >> $LOG_PATH/Save.log

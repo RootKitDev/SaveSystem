@@ -17,6 +17,9 @@ do
 done
 
 # Define PATH
+
+HOME_PATH="/home/backup"
+
 LIB_PATH="$HOME_PATH/Lib.d"
 
 SUB_LOG=""
@@ -50,6 +53,8 @@ Day=$(date +"%u" | cut -d' ' -f2)
 
 Go_Save_WE="2130"
 
+MonthSave=$(date +"%m_%B")
+DaySave=$(date +"%d")
 
 # Determining the type of backup
 if [ $MonthNow -gt $MonthYesterday ] || [ -f $FLAG_PATH/EX-000 ];
