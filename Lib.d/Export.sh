@@ -55,7 +55,5 @@ Export_save(){
             rm $EXPORT_PATH/$1
             echo "Fichier local ($1) supprimé" >> $LOG_PATH/Save$SUB_LOG.log
         fi
-    else
-        rm $EXPORT_PATH/$1
     fi
 }

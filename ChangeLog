@@ -1,3 +1,15 @@
+commit f43756bef117b6d9be3223deff6a0ced1b2d11cf
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Mon Sep 12 14:05:07 2016 +0200
+
+    Add two folders add repare TARÃR_CMD
+
+commit 625d7f6cbd87a5f61830626f5522c98c990787cf
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Sun Sep 11 17:23:49 2016 +0200
+
+    TMP-Resolv Bug 02 and add begin Revolv incompatibility with IHM_SaveSystem
+
 commit ad786a9fc7d2662fd0056e309fde1c52dae89ecd
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Sun Sep 11 17:23:30 2016 +0200
