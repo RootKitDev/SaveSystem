@@ -135,11 +135,17 @@ else
         Intall=$(dpkg -l | grep apache | head -n1)
         if [[ -n $Intall ]]; then
             Appli="apache2"
-            echo "export HOME_PATH=\"$HOME_PATH\"" >> /etc/apache2/envvars
+            for key in "${!VarSaveSystem[@]}"
+            do
+                echo "export $key=\"${VarSaveSystem[$key]}\"" >> /etc/apache2/envvars
+            done
         fi
     else
         Appli="nginx"
-        echo "env HOME_PATH=\"$HOME_PATH\";" >> /etc/nginx/nginx.conf
+        for key in "${!VarSaveSystem[@]}"
+        do
+            echo "env $key=\"${VarSaveSystem[$key]}\"" >> /etc/nginx/nginx.conf
+        done
     fi
     
     echo "Redémarrage du service web : $Appli"

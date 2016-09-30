@@ -1,3 +1,9 @@
+commit f9418c3322a85f7e66eca59d4971d8668d1f1ba8
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Mon Sep 19 14:49:44 2016 +0200
+
+    Export.sh Update : don't delete taball on KT state
+
 commit f43756bef117b6d9be3223deff6a0ced1b2d11cf
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Mon Sep 12 14:05:07 2016 +0200
