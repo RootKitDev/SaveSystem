@@ -1,3 +1,9 @@
+commit f7ee5a08e9e1a7fbb67dad274eaf2741d7e7e892
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Wed Oct 26 08:23:23 2016 +0200
+
+    Big Upgrade : V1.2 release. Check ChangeLog
+
 commit a6df6f909c5e1d6f0c81548afae654d9ce1c419d
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Fri Sep 30 13:01:35 2016 +0200
@@ -14,7 +20,7 @@ commit f43756bef117b6d9be3223deff6a0ced1b2d11cf
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Mon Sep 12 14:05:07 2016 +0200
 
-    Add two folders add repare TAR_CMD
+    Add two folders add repare TARÃR_CMD
 
 commit 625d7f6cbd87a5f61830626f5522c98c990787cf
 Author: RootKitDev <rootkit.dev@gmail.com>
