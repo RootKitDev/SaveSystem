@@ -67,12 +67,16 @@ else
 
     declare -A VarSaveSystem=( [LOG_PATH]="\$HOME_PATH/Logs.d"
                                 [FLAG_PATH]="\$HOME_PATH/Flags"
-                                [EXPORT_PATH]="\$HOME_PATH/Data_Export"
                                 [EXPORT_CKSUM_PATH]="\$HOME_PATH/CkSum_Export"
                                 [LISTED_INCREMENTAL_PATH]="\$HOME_PATH/Lists.d"
                                 [SAVE_LIST_PATH]="\$HOME_PATH/ListSave.d"
                                 [EXCLUDE_LIST_PATH]="\$HOME_PATH/ExcludeSave.d"
                                 [SAVE_STATE_PATH]="\$HOME_PATH/Etats" )
+
+    declare -A VarSaveSystem2=( [EXPORT_PATH]="\$HOME_PATH/Data_Export"
+                                [EXPORT_PATH_SQL]="\$HOME_PATH/Dumps_Export"
+                                [REMOTE_EXPORT_PATH]="/home/save/azrod/Data"
+                                [REMOTE_EXPORT_PATH_SQL]="/home/save/azrod/Dumps" )
 
     echo ""
     
@@ -102,9 +106,7 @@ else
             
             res=${dir:0:1}
             
-            if [[ $res = "/" ]]; then
-                dir=$dir
-            else
+            if [[ $res != "/" ]]; then
                 dir="$(pwd)/$dir"
             fi
             
@@ -121,10 +123,52 @@ else
         
     done
     
+    echo "Les variables suivante change selon la sauvegarde (Data ou SQL)"
+        
+    
+    rep=""
+    EXPORT_PATH="\$HOME_PATH/Data_Export"
+    while [[ $rep != "n" ]] && [[ $rep != "N" ]] && [[ $rep != "y" ]] && [[ $rep != "Y" ]]
+    do
+        echo "\"EXPORT_PATH (Data) \" => $EXPORT_PATH"
+        echo -n "Est-ce correct ? (Y/n) : "
+        read rep
+        if [[ -z $rep ]]; then
+            rep="Y"
+            echo ""
+        fi
+    done
+
+    if [[ $rep = "n" ]] || [[ $rep = "N" ]]; then
+        dir=""
+        while [[ ! ( $dir =~ \/?["a"-"z"] ) ]]
+        do
+            echo -n "Quelle est le chemin pour \"$key\" ? : "
+            read dir
+        done
+        
+        res=${dir:0:1}
+        
+        if [[ $res != "/" ]]; then
+            dir="$(pwd)/$dir"
+        fi
+        
+        if [[ ! -e $dir ]]; then
+            echo "\"$dir\" n'existe pas"
+            echo "Interuption du script d'installation"
+            exit 1
+        else
+            VarSaveSystem2[$key]="$dir"
+            echo "\"$key\" mis a jour"
+            echo ""
+        fi 
+    fi
+    
     echo "\$HOME_PATH=\"$HOME_PATH\"" >> "$HOME_PATH/Lib.d/Var.sh"
     echo "" >> "$HOME_PATH/Lib.d/Var.sh"
     for key in "${!VarSaveSystem[@]}"
     do
+        
         echo "$key=\"${VarSaveSystem[$key]}\"" >> "$HOME_PATH/Lib.d/Var.sh"
     done
     
@@ -152,5 +196,14 @@ else
     eval $(service $Appli restart)
     
     #rm install.sh"
+    
+    echo '
+if [[ -z $SUB_LOG ]]; then
+    EXPORT_PATH="$HOME_PATH/Data_Export"
+    REMOTE_EXPORT_PATH="/remote/path/to/export/Data"
+else
+    EXPORT_PATH="$HOME_PATH/Dumps_Export"
+    REMOTE_EXPORT_PATH="/remote/path/to/export/Dumps"
+fi' >> "$HOME_PATH/Lib.d/Var.sh"
     
 fi

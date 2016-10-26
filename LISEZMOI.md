@@ -9,7 +9,7 @@ SaveSystem utilise un seul et unique language :
 
 ---
 ### Version
-0.1.0
+0.1.2
 
 Bien sûr ce Système de sauvegarde est open source avec un [dépôt public][save] sur GitHub.
 

@@ -4,12 +4,19 @@
 # required.sh
 # Utilité: ce script est utisé par Data_Save.sh ainsi que SQL_Save.sh, vérifie la disponibilité des hotes
 # Auteur: RootKitDev <RootKit.Dev@gmail.com>
-# Mise à jour le: 01/08/2016
+# Mise à jour le: 26/10/2016
 ######################################
 
 Check_Remote_Host(){
 
-    Res=$(traceroute $REMOTE_HOST | grep "$(nslookup $REMOTE_HOST | grep Address | sed '1d' | cut -d' ' -f2)" | sed '1d')
+    IP=$(cat "$PARTENAIRE/Partenaires" | grep $REMOTE_HOST| cut -d':' -f2)
+    
+    Res=$(traceroute $REMOTE_HOST | grep $IP | sed '1d')
+    
+    if [[ -z "$Res" ]]; then
+        Res=$(traceroute $REMOTE_HOST -I | grep $IP | sed '1d')
+    fi
+    
     echo "" >> $LOG_PATH/Save$SUB_LOG.log
     
     if [[ -z "$Res" ]]; then

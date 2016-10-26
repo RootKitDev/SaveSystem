@@ -1,3 +1,9 @@
+commit a6df6f909c5e1d6f0c81548afae654d9ce1c419d
+Author: RootKitDev <rootkit.dev@gmail.com>
+Date:   Fri Sep 30 13:01:35 2016 +0200
+
+    Upgrade Export Lib for use multi host backup, Upgrade HMI in process
+
 commit f9418c3322a85f7e66eca59d4971d8668d1f1ba8
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Mon Sep 19 14:49:44 2016 +0200
@@ -8,7 +14,7 @@ commit f43756bef117b6d9be3223deff6a0ced1b2d11cf
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Mon Sep 12 14:05:07 2016 +0200
 
-    Add two folders add repare TARÃR_CMD
+    Add two folders add repare TAR_CMD
 
 commit 625d7f6cbd87a5f61830626f5522c98c990787cf
 Author: RootKitDev <rootkit.dev@gmail.com>

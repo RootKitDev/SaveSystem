@@ -9,7 +9,7 @@ SaveSystem uses a single language:
 
 ---
 ### version
-0.1.0
+0.1.2
 
 Of course this backup system is open source with a [public repository] [save] on GitHub.
 

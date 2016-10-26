@@ -4,7 +4,7 @@
 # Check_Sum.sh
 # Utilité: ce script est utisé par Export.sh
 # Auteur: RootKitDev <RootKit.Dev@gmail.com>
-# Mise à jour le: 02/08/2016
+# Mise à jour le: 26/10/2016
 ######################################
 
 
@@ -29,10 +29,18 @@ Ctrl_ChkSum(){
         echo "Les CheckSums de la sauvegarde $1 du $(date -d 'now' +%d/%m/%Y) en Local et sur \"$REMOTE_HOST\" sont identitiques :" >> $LOG_PATH/Save$SUB_LOG.log
         echo "Local  : $Local" >> $LOG_PATH/Save$SUB_LOG.log
         echo "Remote : $Remote" >> $LOG_PATH/Save$SUB_LOG.log
-        echo "Suppression des fichiers .cksum" >> $LOG_PATH/Save$SUB_LOG.log
-        rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Local.cksum"
-        rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Remote.cksum"
-        echo "Fichiers .cksum supprimés" >> $LOG_PATH/Save$SUB_LOG.log
+        
+        if [[ $(($i + 1)) = ${#REMOTE_HOST_TAB[@]} ]]; then
+            echo "Suppression des fichiers .cksum" >> $LOG_PATH/Save$SUB_LOG.log
+            rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Local.cksum"
+            rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Remote.cksum"
+            echo "Fichiers .cksum supprimés" >> $LOG_PATH/Save$SUB_LOG.log
+        elif [[ $(($i + 1)) < ${#REMOTE_HOST_TAB[@]} ]]; then
+            echo "Suppression du fichiers .cksum Remote" >> $LOG_PATH/Save$SUB_LOG.log
+            rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Remote.cksum"
+            echo "Fichier .cksum Remote supprimé" >> $LOG_PATH/Save$SUB_LOG.log
+        fi
+        
         
         if [[ -z $SUB_LOG ]]; then
             State_Save 0

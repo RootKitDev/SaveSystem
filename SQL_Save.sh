@@ -5,7 +5,7 @@
 # SQL_Save.sh
 # Utilité: ce script sert à faire des sauvegardes SQL de façon dynamique
 # Auteur: RootKitDev <RootKit.Dev@gmail.com>
-# Mise à jour le: 01/08/2016
+# Mise à jour le: 26/10/2016
 ######################################
 
 # Verbose mode
@@ -18,26 +18,25 @@ do
 done
 
 # Define PATH
-HOME_PATH=""
-LOG_PATH=""
 
-LIB_PATH=""
+HOME_PATH="/home/backup"
 
-EXPORT_PATH=""
-EXPORT_CKSUM_PATH=""
+LIB_PATH="$HOME_PATH/Lib.d"
 
-REMOTE_EXPORT_PATH=""
+SUB_LOG="_SQL"
 
-SAVE_STATE_PATH=""
+# Load Var lib, for all var path (log, flag, ...)
+source $LIB_PATH/Var.sh
 
-SUB_LOG=""
-
-# Load all .sh lib, using source command
+# Load all the others .sh lib
 source $LIB_PATH/Save_SQL.sh
 source $LIB_PATH/Export.sh
 source $LIB_PATH/required.sh
 source $LIB_PATH/Check_Sum.sh
 source $LIB_PATH/States.sh
+
+MonthSave=$(date +"%m_%B")
+DaySave=$(date +"%d")
 
 echo "EC" > $SAVE_STATE_PATH/$MonthSave/$DaySave
 
@@ -51,8 +50,10 @@ echo "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-" >> $LOG_P
 echo `date` >> $LOG_PATH/Save.log
 echo "Sauvegarde SQL" >> $LOG_PATH/Save.log
 echo "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-" >> $LOG_PATH/Save.log
-
 echo 'Sauvegarde SQL Week-End (Sauvegarde Full de chaque base)' >> $LOG_PATH/Save.log
+
+echo "" >> $LOG_PATH/Save.log
+echo "Arret de MySQL" >> $LOG_PATH/Save.log
 
 # Launch SQL Save
 SQL_save "all"

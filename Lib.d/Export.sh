@@ -4,12 +4,12 @@
 # Export.sh
 # Utilité: ce script est utisé par Save.sh ainsi que SaveSQL.sh, transfet vers des hotes pré-défini
 # Auteur: RootKitDev <RootKit.Dev@gmail.com>
-# Mise à jour le: 01/08/2016
+# Mise à jour le: 26/10/2016
 ######################################
 
 
 Export_save(){
-    export SSHPASS=SavePasswd
+    SSHPASS=SavePasswd
     
     Save_User="saveuser"
     
@@ -53,12 +53,23 @@ Export_save(){
             echo "" >> $LOG_PATH/Save$SUB_LOG.log
             echo "Controle des CheckSums :" >> $LOG_PATH/Save$SUB_LOG.log
             
-            if [[ "$(Ctrl_ChkSum "$2")" = 0 &&  "$i" > ${#REMOTE_HOST_TAB[@]} ]]; then
+            if [[ "$(Ctrl_ChkSum "$2")" = 0 && $(($i + 1)) = ${#REMOTE_HOST_TAB[@]} ]]; then
                 echo "" >> $LOG_PATH/Save$SUB_LOG.log
                 echo "Suppression du fichier de sauvegarde local ($1)" >> $LOG_PATH/Save$SUB_LOG.log
                 rm $EXPORT_PATH/$1
                 echo "Fichier local ($1) supprimé" >> $LOG_PATH/Save$SUB_LOG.log
             fi
+        elif [[ "$(Check_Remote_Host)" = 1 && "$(cat "$SAVE_STATE_PATH/$MonthSave/$DaySave")" =~ "OK" && $(($i + 1)) == ${#REMOTE_HOST_TAB[@]} ]]; then
+        
+            echo "" >> $LOG_PATH/Save$SUB_LOG.log
+            echo "La sauvegarde a été exportées sur au moins un hôte distant" >> $LOG_PATH/Save$SUB_LOG.log
+            echo "Suppression du fichier de sauvegarde local ($1)" >> $LOG_PATH/Save$SUB_LOG.log
+            rm $EXPORT_PATH/$1
+            echo "Fichier local ($1) supprimé" >> $LOG_PATH/Save$SUB_LOG.log
+            echo "Suppression des fichiers .cksum" >> $LOG_PATH/Save$SUB_LOG.log
+            rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Local.cksum"
+            rm $EXPORT_CKSUM_PATH"/"$1"_"$(date -d 'now' +%Y_%m_%d)"_Remote.cksum"
+            echo "Fichiers .cksum supprimés" >> $LOG_PATH/Save$SUB_LOG.log
         fi
     done
 }

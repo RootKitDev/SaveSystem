@@ -4,7 +4,7 @@
 # exist.sh
 # Utilité: ce script est utisé par Data_Save.sh, vérifé l'éligibilité de l'argument
 # Auteur: RootKitDev <RootKit.Dev@gmail.com>
-# Mise à jour le: 01/08/2016
+# Mise à jour le: 26/10/2016
 ######################################
 
 
