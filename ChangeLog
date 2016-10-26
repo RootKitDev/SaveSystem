@@ -3,7 +3,33 @@ Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Wed Oct 26 08:23:23 2016 +0200
 
     Big Upgrade : V1.2 release. Check ChangeLog
+    New :
+        - Exchange authentication method when SQL dumps : "--defaults-extra-file"
+        
+        - Adding a system of "partner" in order to ease the verification of availability of "partners" 
+        WARNING: host partners in updating manually in case of change (name and / or IP)
+        
+        -For display in web HMI (update in progress) if more partners are defined,
+        the system takes into consideration the statements of previous actions of (KO state does not replace OK state)
+        
+        - Establishment of calculating the total size of files in the tar ball 
+        (instead of the size of the directory that were entered in the file inclusions)
 
+    InComing :
+        - An installation and configuration script is writing yard.
+        It will activate, or not, a number of "options", and configure up to cater to every need.
+
+            - The options :
+                - Outsourcing backups
+                - The declaration of the partners (you can not want to host partners)
+                - Enable data backups
+                - Enable SQL backups
+
+            - The configuration :
+                - Declaration of the desired type of backup (Daily, Weekly, Monthly or Weekend (backup Weekly particular)
+                - Setups trigger backups (date and time: e.g 1st Saturday of the month)    
+        
+        
 commit a6df6f909c5e1d6f0c81548afae654d9ce1c419d
 Author: RootKitDev <rootkit.dev@gmail.com>
 Date:   Fri Sep 30 13:01:35 2016 +0200
